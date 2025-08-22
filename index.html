@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>✨ The Storyteller Bot - นิทานมหัศจรรย์</title>
+    <link rel="stylesheet" href="css/storyteller-styles.css" />
+  </head>
+  <body>
+    <!-- Cosmos background -->
+    <div class="cosmos"></div>
+
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Aurora effect -->
+    <div class="aurora"></div>
+
+    <!-- Magical particles -->
+    <div class="magic-particles" id="particles"></div>
+
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="magic-icons">
+          <span
+            class="floating-icon"
+            style="top: 10%; left: 10%; animation-delay: 0s"
+            >🌟</span
+          >
+          <span
+            class="floating-icon"
+            style="top: 20%; right: 15%; animation-delay: 2s"
+            >✨</span
+          >
+          <span
+            class="floating-icon"
+            style="bottom: 20%; left: 20%; animation-delay: 4s"
+            >🌙</span
+          >
+          <span
+            class="floating-icon"
+            style="bottom: 10%; right: 10%; animation-delay: 6s"
+            >⭐</span
+          >
+        </div>
+        <div class="config-panel">
+          <button class="config-button" onclick="openConfig()">⚙️</button>
+        </div>
+        <h1>✨ The Storyteller Bot ✨</h1>
+        <p class="subtitle">นักเล่านิทานมหัศจรรย์ AI</p>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="welcome-message">
+          <h2>🌟 ยินดีต้อนรับสู่โลกแห่งนิทาน! 🌟</h2>
+          <p>
+            สวัสดีค่ะ! ฉันคือนักเล่านิทาน AI
+            ที่พร้อมจะสร้างเรื่องราวมหัศจรรย์ให้คุณ<br />
+            บอกฉันสิว่าคุณอยากฟังนิทานแบบไหน?<br />
+            ผจญภัย? ตลก? รักโรแมนติก? หรือแฟนตาซี?<br />
+            เรามาสร้างเรื่องราวด้วยกันนะคะ! ✨
+          </p>
+
+          <div class="quick-actions">
+            <button
+              class="action-button"
+              onclick="quickMessage('อยากฟังนิทานผจญภัย')"
+            >
+              <span>⚔️ นิทานผจญภัย</span>
+            </button>
+            <button
+              class="action-button"
+              onclick="quickMessage('อยากฟังนิทานแฟนตาซี')"
+            >
+              <span>🧙‍♂️ นิทานแฟนตาซี</span>
+            </button>
+            <button
+              class="action-button"
+              onclick="quickMessage('อยากฟังนิทานตลก')"
+            >
+              <span>😄 นิทานตลก</span>
+            </button>
+            <button
+              class="action-button"
+              onclick="quickMessage('อยากฟังนิทานรักโรแมนติก')"
+            >
+              <span>💕 นิทานรัก</span>
+            </button>
+            <button
+              class="action-button"
+              onclick="quickMessage('อยากฟังนิทานสัตว์')"
+            >
+              <span>🦊 นิทานสัตว์</span>
+            </button>
+            <button
+              class="action-button"
+              onclick="quickMessage('เล่านิทานก่อนนอน')"
+            >
+              <span>🌙 นิทานก่อนนอน</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-dots">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+
+      <div class="chat-input-container">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <textarea
+              id="messageInput"
+              placeholder="บอกฉันสิว่าอยากฟังนิทานเกี่ยวกับอะไร... ✨"
+              rows="1"
+              onkeypress="handleKeyPress(event)"
+              oninput="adjustTextarea(this)"
+            ></textarea>
+          </div>
+          <button id="sendButton" onclick="sendMessage()">
+            <span>✨</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Config Modal -->
+    <div class="config-modal" id="configModal">
+      <div class="config-content">
+        <h3>⚙️ ตั้งค่า Storyteller Bot</h3>
+        <input
+          type="text"
+          id="ngrokUrl"
+          placeholder="Ngrok URL (เช่น https://abc123.ngrok.io)"
+          value=""
+        />
+        <input
+          type="text"
+          id="webhookPath"
+          placeholder="Webhook Path (เช่น /webhook/Story)"
+          value="/webhook/Story"
+        />
+        <div class="config-buttons">
+          <button class="cancel-btn" onclick="closeConfig()">ยกเลิก</button>
+          <button class="save-btn" onclick="saveConfig()">บันทึก</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/storyteller.js"></script>
+  </body>
+</html>
